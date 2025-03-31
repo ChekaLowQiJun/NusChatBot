@@ -31,7 +31,7 @@ ct_splitter = RecursiveCharacterTextSplitter(
 
 docs = ct_splitter.split_documents(data)
 
-embedding_function = OpenAIEmbeddings(openai_api_key='sk-proj-fbLzrqsNlz5R2I7o78SAT3BlbkFJyUNTD38LCyWcZNsv1LVI')
+embedding_function = OpenAIEmbeddings(openai_api_key='')
 
 vectordb = Chroma(
     persist_directory='data',
@@ -42,8 +42,7 @@ vectordb.persist()
 docstorage= Chroma.from_documents(docs, embedding_function)
 
 retriever=docstorage.as_retriever()
-llm = OpenAI(model_name='gpt-3.5-turbo-instruct', openai_api_key='sk-proj-fbLzrqsNlz5R2I7o78SAT3BlbkFJyUNTD38LCyWcZNsv1LVI')
-#llm = HuggingFaceEndpoint(repo_id='mistralai/Mistral-7B-Instruct-v0.3', huggingfacehub_api_token='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')
+llm = OpenAI(model_name='gpt-3.5-turbo-instruct', openai_api_key='')
 
 chat_history = ChatMessageHistory()
 
